@@ -1,18 +1,8 @@
 
 
-### Prerequisites
-1. **Run Locally** (if testing locally):
-   ```bash
-   cd "C:\Users\c plug computers\Documents\SMSAPP"
-   npm run dev
-   ```
-   - Base URL: `http://localhost:5000/api`
 
-2. **Deployed on Vercel** (if testing live):
-   - Ensure environment variables are set in the Vercel dashboard.
-   - Base URL: https://smsbackend-iota.vercel.app/api
 
-3. **Get a User JWT Token** (for authenticated endpoints):
+1. **Get a User JWT Token** (for authenticated endpoints):
    - Register a user:
      ```bash
      curl -X POST "https://smsbackend-iota.vercel.app/api/auth/register" \
@@ -22,7 +12,7 @@
      - Response: `{ "token": "<user_token>" }`
      - Save `<user_token>` for endpoints requiring `Authorization: Bearer <user_token>`.
 
-4. **Get an Admin JWT Token** (for admin endpoints):
+2. **Get an Admin JWT Token** (for admin endpoints):
    - Run `node seedAdmin.js` to create an admin:
      ```bash
      node seedAdmin.js
@@ -36,16 +26,11 @@
      - Response: `{ "token": "<admin_token>" }`
      - Save `<admin_token>` for admin endpoints.
 
-5. **Dynamic Values**:
+3. **Dynamic Values**:
    - `<paymentId>`: Obtain from a payment response (e.g., Stripe `pay_xxx` from `/payments/initiate`).
    - `<promoId>`: Obtain from `POST /api/promo` response.
-   - `<withdrawalId>`: Placeholder (not implemented in `routes/affiliate.js`).
+  
 
-6. **Testing Tools**:
-   - Use a terminal for cURL.
-   - Alternatively, use Postman or Insomnia, importing these cURL commands.
-
-Below are the cURL commands for **local testing** (`https://smsbackend-iota.vercel.app/api`). To test on Vercel, replace the base URL with `https://<your-vercel-url>/api`.
 
 ---
 
@@ -342,7 +327,7 @@ Below are the cURL commands for **local testing** (`https://smsbackend-iota.verc
   - `<admin_token>`: From admin login after running `seedAdmin.js`.
   - `<paymentId>`: From responses of `/payments/initiate`, `/wallet/deposit`, etc.
   - `<promoId>`: From `POST /promo`.
-  - `<withdrawalId>`: Not implemented; use a placeholder.
+  - `<withdrawalId>`:
 - **Payment Testing**:
   - Use test credentials for Stripe (`pm_test`), PayPal (sandbox), or Coinbase.
   - Ensure `.env` has valid keys.
